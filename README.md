@@ -78,3 +78,65 @@ Prettier can also format other file types besides just javascript. We will add `
   }
 }
 ```
+
+## Usage
+
+Now whenever you create a commit, the code will be auto formatted with prettier.
+
+```bash
+$ npm run lint
+
+> linting-example@1.0.0 lint C:\Projects\linting-example
+> eslint .
+
+
+C:\Projects\linting-example\index.js
+   7:10  error    'doSomething' is defined but never used  no-unused-vars
+   7:22  error    'arg1' is defined but never used         no-unused-vars
+   7:28  error    'next' is defined but never used         no-unused-vars
+  28:1   warning  Unexpected console statement             no-console
+  29:1   warning  Unexpected console statement             no-console
+  30:1   warning  Unexpected console statement             no-console
+  31:1   warning  Unexpected console statement             no-console
+  32:1   warning  Unexpected console statement             no-console
+  33:1   warning  Unexpected console statement             no-console
+  34:1   warning  Unexpected console statement             no-console
+  35:1   warning  Unexpected console statement             no-console
+  36:1   warning  Unexpected console statement             no-console
+  37:1   warning  Unexpected console statement             no-console
+  38:1   warning  Unexpected console statement             no-console
+  39:1   warning  Unexpected console statement             no-console
+  40:1   warning  Unexpected console statement             no-console
+
+✖ 16 problems (3 errors, 13 warnings)
+```
+
+## Ignoring stuff
+
+In case you need for some odd reason to disable linting, you can add a `/* eslint-disable */` comment to the top of your file.
+
+```js
+/* eslint-disable */
+```
+
+If you want to disable a single line:
+
+```js
+// this will disable all rules
+/* eslint-disable-next-line */
+function(a,b,c,d) {}
+
+// this will disable a specific rule
+/* eslint-disable-next-line no-console */
+console.log('log me something')
+```
+
+To disable a rule (or linting completely) for a block, use:
+
+```js
+/* eslint-disable no-console */
+console.log('log')
+console.log('me')
+console.log('something')
+/* eslint-enable no-console */
+```

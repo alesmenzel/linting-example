@@ -1,20 +1,27 @@
 {
   "name": "linting-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "Linting example with airbnb, eslint, prettier, husky and lint-staged",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
     "format": "eslint --fix .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alesmenzel/linting-example.git"
   },
-  "keywords": [],
+  "keywords": [
+    "linting",
+    "airbnb",
+    "eslint",
+    "prettier",
+    "husky",
+    "lint-staged"
+  ],
   "author": "Aleš Menzel <alesmenzel@gmail.com> (https://github.com/alesmenzel)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/alesmenzel/linting-example/issues"
   },
