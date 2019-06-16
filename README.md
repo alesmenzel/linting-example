@@ -80,7 +80,8 @@ Prettier can also format other file types besides just javascript. We will add `
 
 ## Usage
 
-Now whenever you create a commit, the code will be auto formatted with prettier.
+Now whenever you create a commit, the code will be auto formatted with prettier.\
+_(Note: you can skip git hooks by passing `--no-verify` (`-n`) option to git)_
 
 ```bash
 $ git commit -m "made some style mistakes, but prettier will fix it"
