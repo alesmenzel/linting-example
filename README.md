@@ -35,7 +35,6 @@ Then create a `.prettierrc` file. I recommend to set the **printWidth** (line le
 ```json
 {
   "trailingComma": "es5",
-  "semi": false,
   "singleQuote": true,
   "printWidth": 100
 }
