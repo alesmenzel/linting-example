@@ -4,8 +4,8 @@
   "description": "Linting example with airbnb, eslint, prettier, husky and lint-staged",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
-    "format": "eslint --fix .",
+    "lint": "eslint ./src",
+    "format": "eslint --fix ./src",
     "test": "npm run lint"
   },
   "repository": {
@@ -34,6 +34,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.11.0",
+    "husky": "^2.4.1",
+    "lint-staged": "^8.2.1",
     "prettier": "^1.18.2"
   },
   "husky": {
@@ -43,8 +45,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,md,json}": [
+    "*.js": [
       "eslint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
       "git add"
     ]
   }

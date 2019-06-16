@@ -22,6 +22,8 @@ Install `husky` and `lint-staged` for adding git hooks and linting files when co
 npx mrm lint-staged
 ```
 
+_( Note: sometimes it does not install husky and lint-staged in your dev dependencies, if thats the case, install them manually `npm install --save-dev husky lint-staged` )_
+
 Now create a `.eslintrc` file with the following content. We will use airbnb config, but let prettier do the formatting for us (it will disable the conflicting rules in airbnb/prettier).
 
 ```json
@@ -65,15 +67,13 @@ Then add a script that will run our linter and formatter. We will also change th
 }
 ```
 
-Prettier can also format other file types besides just javascript. We will add `.json` and `.md`.
+Prettier can also format other file types besides just javascript. We will add `.json` and `.md` (Note that we use prettier directly).
 
 ```json
 {
   "lint-staged": {
-    "*.{js,md,json}": [
-      "eslint --fix",
-      "git add"
-    ]
+    "*.js": ["eslint --fix", "git add"],
+    "*.{json,md}": ["prettier --write", "git add"]
   }
 }
 ```
@@ -81,6 +81,28 @@ Prettier can also format other file types besides just javascript. We will add `
 ## Usage
 
 Now whenever you create a commit, the code will be auto formatted with prettier.
+
+```bash
+$ git commit -m "made some style mistakes, but prettier will fix it"
+husky > pre-commit (node v10.15.0)
+Stashing changes... [started]
+Stashing changes... [skipped]
+→ No partially staged files found...
+Running linters... [started]
+Running tasks for *.js [started]
+Running tasks for *.{json,md} [started]
+Running tasks for *.{json,md} [skipped]
+→ No staged files match *.{json,md}
+eslint --fix [started]
+eslint --fix [completed]
+git add [started]
+git add [completed]
+Running tasks for *.js [completed]
+Running linters... [completed]
+...
+```
+
+Running the lint:
 
 ```bash
 $ npm run lint
@@ -134,8 +156,8 @@ To disable a rule (or linting completely) for a block, use:
 
 ```js
 /* eslint-disable no-console */
-console.log('log')
-console.log('me')
-console.log('something')
+console.log('log');
+console.log('me');
+console.log('something');
 /* eslint-enable no-console */
 ```
