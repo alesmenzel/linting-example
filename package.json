@@ -1,0 +1,44 @@
+{
+  "name": "linting-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "eslint --fix .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alesmenzel/linting-example.git"
+  },
+  "keywords": [],
+  "author": "Aleš Menzel <alesmenzel@gmail.com> (https://github.com/alesmenzel)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alesmenzel/linting-example/issues"
+  },
+  "homepage": "https://github.com/alesmenzel/linting-example#readme",
+  "devDependencies": {
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^5.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.11.0",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
+  },
+  "lint-staged": {
+    "*.{js,md,json}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
